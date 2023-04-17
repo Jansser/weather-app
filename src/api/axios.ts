@@ -7,3 +7,11 @@ export const geocodingApiClient = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const weatherServiceApiClient = axios.create({
+  baseURL: "https://api.weather.gov",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+});

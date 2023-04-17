@@ -1,26 +1,29 @@
 import { ChangeEvent, FC, FormEvent } from "react";
+import { Form, Input } from "./SearchForm.styles";
 
 interface SearchFormProps {
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   query: string;
+  isLoading: boolean;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   handleQueryChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const SearchForm: FC<SearchFormProps> = ({
   query,
+  isLoading,
   handleSubmit,
   handleQueryChange,
 }) => (
-  <div>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Type the full address to search, example: 4600 SILVER HILL RD, WASHINGTON, DC, 20233"
-        value={query}
-        onChange={handleQueryChange}
-      ></input>
+  <Form onSubmit={handleSubmit}>
+    <Input
+      type="text"
+      placeholder="Type the full address to search, example: 4600 SILVER HILL RD, WASHINGTON, DC, 20233"
+      value={query}
+      onChange={handleQueryChange}
+    ></Input>
 
-      <button type="submit">Search</button>
-    </form>
-  </div>
+    <button type="submit" disabled={isLoading}>
+      Search
+    </button>
+  </Form>
 );
