@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Form = styled.form`
   display: flex;
   gap: 1em;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 export const Input = styled.input`

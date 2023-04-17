@@ -17,7 +17,7 @@ export const SearchForm: FC<SearchFormProps> = ({
   <Form onSubmit={handleSubmit}>
     <Input
       type="text"
-      placeholder="Type the full address to search, example: 4600 SILVER HILL RD, WASHINGTON, DC, 20233"
+      placeholder="Full address like: 4600 SILVER HILL RD, WASHINGTON, DC, 20233"
       value={query}
       onChange={handleQueryChange}
     ></Input>

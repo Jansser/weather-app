@@ -31,4 +31,8 @@ export const ShiftContainer = styled.div`
   p {
     margin: 0;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
