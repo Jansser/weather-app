@@ -16,6 +16,7 @@ export const SearchForm: FC<SearchFormProps> = ({
 }) => (
   <Form onSubmit={handleSubmit}>
     <Input
+      data-testid="search-input"
       type="text"
       placeholder="Full address like: 4600 SILVER HILL RD, WASHINGTON, DC, 20233"
       value={query}
