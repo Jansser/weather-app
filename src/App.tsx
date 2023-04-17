@@ -6,6 +6,8 @@ import { useQuery } from "@tanstack/react-query";
 import { getWeatherForecast } from "./api/services/Weather";
 import "./App.css";
 import { ForecastInfo } from "./components/ForecastInfo/ForecastInfo";
+import { AxiosError } from "axios";
+import { Forecast } from "./api/services/types";
 
 const App: FC = () => {
   const [fullAddressQuery, setFullAddressQuery] = useState("");
@@ -19,11 +21,15 @@ const App: FC = () => {
     isError,
     error,
     refetch,
-  } = useQuery(queryKey, () => getWeatherForecast(fullAddressQuery), {
-    enabled: false,
-    refetchOnWindowFocus: false,
-    retry: false,
-  });
+  } = useQuery<Forecast, AxiosError>(
+    queryKey,
+    () => getWeatherForecast(fullAddressQuery),
+    {
+      enabled: false,
+      refetchOnWindowFocus: false,
+      retry: false,
+    }
+  );
 
   const handleAddressSearch = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,7 +49,7 @@ const App: FC = () => {
     }
 
     if (isError) {
-      return <p>Error: {(error as any)?.message}</p>;
+      return <p>Error: {error.message}</p>;
     }
 
     if (isFetched && forecastData) {
